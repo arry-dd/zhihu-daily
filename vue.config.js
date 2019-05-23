@@ -23,6 +23,7 @@ module.exports = {
     },
 
     pluginOptions: {
+    //全局导入less
       'style-resources-loader': {
         preProcessor: 'less',
         patterns: [path.resolve(__dirname, "src/assets/styles/variable.less")]

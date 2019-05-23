@@ -2,20 +2,22 @@
     <div class="home">
         <home-header></home-header>
         <home-swiper :topStories="topStories"></home-swiper>
-        <div class="dv"></div>
+        <home-news></home-news>
     </div>
 </template>
 
 <script>
     import homeHeader from 'home/com/homeHeader'
     import homeSwiper from 'home/com/homeSwiper'
+    import homeNews from 'home/com/homeNews'
     import axios from 'axios'
 
     export default {
         name: 'Home',
         components: {
             homeHeader,
-            homeSwiper
+            homeSwiper,
+            homeNews
         },
         data() {
             return {

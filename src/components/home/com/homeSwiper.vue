@@ -68,6 +68,7 @@
         color: @fWhite;
         font-size: .4rem;
         margin: 0 .3rem;
+        line-height: .5rem;
     }
 
 
