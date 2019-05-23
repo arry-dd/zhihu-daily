@@ -13,12 +13,19 @@ module.exports = {
             }
         }
     },
+
     chainWebpack: (config)=>{
         //修改文件引入自定义路径
         config.resolve.alias
             .set('home', resolve('src/components/home'))
             .set('src', resolve('src'))
             .set('styles', resolve('src/assets/styles'))
-    }
+    },
 
+    pluginOptions: {
+      'style-resources-loader': {
+        preProcessor: 'less',
+        patterns: [path.resolve(__dirname, "src/assets/styles/variable.less")]
+      }
+    }
 }

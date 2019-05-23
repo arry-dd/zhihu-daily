@@ -17,7 +17,6 @@
 </script>
 
 <style scoped lang="less">
-    @import '~styles/variable.less';
     .header {
         width: 100%;
         background-color: @baseBlueColor;

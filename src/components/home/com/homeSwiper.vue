@@ -39,8 +39,6 @@
 </script>
 
 <style scoped lang="less">
-    @import '~styles/variable.less';
-
     .home-swiper /deep/ .swiper-pagination-bullet-active {
         background-color: @fWhite;
     }
