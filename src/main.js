@@ -11,6 +11,7 @@ import 'styles/border.css'
 //解决点击延迟问题
 import fastClick from 'fastclick';
 
+
 //引入阿里巴巴图标
 import 'styles/iconfont.css'
 fastClick.attach(document.body);

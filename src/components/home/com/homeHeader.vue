@@ -1,9 +1,9 @@
 <template>
     <div class="header">
-        <div class="header-menu"><span class="iconfont">&#xe605;</span></div>
+        <div class="header-menu"><span class="iconfont icon-menu">&#xe605;</span></div>
         <div class="header-text">首页</div>
-        <div class="header-set"><span class="iconfont">&#xe6a9;</span></div>
-        <div class="header-alert"><span class="iconfont">&#xe634;</span></div>
+        <div class="header-set"><span class="iconfont icon-set">&#xe6a9;</span></div>
+        <div class="header-alert"><span class="iconfont icon-alert">&#xe794;</span></div>
     </div>
 </template>
 
@@ -36,6 +36,12 @@
         .header-alert, .header-set {
             float: right;
         }
-        
+        .icon-set{
+            font-size: .4rem;
+        }
+        .icon-alert {
+            font-size: .5rem;
+        }
+
     }
 </style>
