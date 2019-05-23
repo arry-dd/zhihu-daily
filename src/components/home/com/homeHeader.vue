@@ -24,6 +24,10 @@
         overflow: hidden;
         font-size: .35rem;
         color: @fWhite;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 5;
         div {
             display: inline-block;
             height: 1.1rem;

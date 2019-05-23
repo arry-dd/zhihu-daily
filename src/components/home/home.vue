@@ -2,6 +2,7 @@
     <div class="home">
         <home-header></home-header>
         <home-swiper :topStories="topStories"></home-swiper>
+        <div class="dv"></div>
     </div>
 </template>
 
@@ -40,6 +41,8 @@
     }
 </script>
 
-<style>
-
+<style scoped lang="less">
+    .dv {
+        height: 50rem;
+    }
 </style>

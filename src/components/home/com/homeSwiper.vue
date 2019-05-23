@@ -53,7 +53,9 @@
         position: absolute;
         bottom: .1rem;
     }
-
+    .home-swiper {
+        margin-top: 1.1rem;
+    }
     .swiper-img {
         width: 100%;
         padding-bottom: 50%;
