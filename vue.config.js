@@ -5,7 +5,13 @@ function resolve (dir) {
 
 module.exports = {
     devServer: {
-        port: 5000
+        port: 5000,
+        proxy: {
+            '/api': {
+                target: 'https://news-at.zhihu.com',
+                changeOrigin: true
+            }
+        }
     },
     chainWebpack: (config)=>{
         //修改文件引入自定义路径
