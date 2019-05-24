@@ -33,8 +33,8 @@
             getLatestNewsSucc(ret) {
                 const data = ret.data
                 if (data.date) {
-                    this.$store.commit('changeTopStories',data.top_stories)
-                    this.$store.commit('changelatest',data.stories)
+                    this.$store.dispatch('changeTopStories',data.top_stories)
+                    this.$store.dispatch('changelatest',data.stories)
                 }
             },
             //获取日期
@@ -46,7 +46,7 @@
                 }
                 let year = date.getFullYear()
                 let nowDate = date.getDate()
-                this.$store.commit('changeDate',year+''+month+''+nowDate)
+                this.$store.dispatch('changeDate',year+''+month+''+nowDate)
             },
             getPastNews() {
                 axios.get('/api/4/news/before/'+this.date)
