@@ -41,6 +41,7 @@
             }
         },
         methods: {
+        //夜间模式
             isNight() {
                 if(this.night == true) {
                     this.ulLatestClass = 'news-latest news-latest-night'

@@ -21,6 +21,8 @@ module.exports = {
             .set('src', resolve('src'))
             .set('styles', resolve('src/assets/styles'))
             .set('store', resolve('src/store'))
+            .set('common', resolve('src/components/common'))
+            .set('detail', resolve('src/components/detail'))
     },
 
     pluginOptions: {
