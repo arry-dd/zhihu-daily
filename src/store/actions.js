@@ -19,8 +19,8 @@ export default {
     pushPastStories(ctx, data) {
         ctx.commit('pushPastStories', data)
     },
-    //以前的新闻
-    pushnewsDate(ctx, data) {
-        ctx.commit('pushnewsDate', data)
+    //以前的新闻日期的星期几
+    pushNewsDay(ctx, data) {
+        ctx.commit('pushNewsDay', data)
     }
 }

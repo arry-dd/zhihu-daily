@@ -26,7 +26,7 @@ export default  {
         state.newsDate.push(month+'月'+date+'日')
     },
     //以前新闻日期的星期几
-    pushnewsDate(state,data) {
+    pushNewsDay(state,data) {
         state.newsDay.push(data)
     }
 }
