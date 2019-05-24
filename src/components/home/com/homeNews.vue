@@ -7,9 +7,10 @@
                 <img class="news-info-img" :src="item.images[0]">
             </li>
         </ul>
-        <ul class="news-past">
-            <li class="news-date">今日新闻</li>
-            <li class="news-info" v-for="(item,index) in latestStories" :key="index">
+        <ul class="news-past" v-for="(stores,index) in pastStories" :key="index">
+            <li class="news-date">{{newsDate[index]}} 
+                {{newsDay[index]}}</li>
+            <li class="news-info" v-for="(item,index) in stores" :key="index">
                 <div class="news-info-desc">{{item.title}}</div>
                 <img class="news-info-img" :src="item.images[0]">
             </li>
@@ -23,14 +24,14 @@
     export default {
         name: 'homeNews',
         computed: {
-            ...mapState(['latestStories', 'night'])
+            ...mapState(['latestStories', 'night','pastStories','newsDate','newsDay'])
         }
     }
 
 </script>
 
 <style scoped lang="less">
-    .news-latest {
+    .news-latest, .news-past {
         background-color: @bgColor;
         text-align: center;
         overflow: hidden;
