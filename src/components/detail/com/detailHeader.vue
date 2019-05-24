@@ -28,7 +28,7 @@
         top: 0;
         left: 0;
         z-index: 5;
-        padding-top: 5%;
+        padding-bottom: 5%;
 
     &.header-night {
          background-color: @baseBlueColorNight;
