@@ -21,7 +21,7 @@
             homeNews
         },
         computed: {
-            ...mapState(['topStories'])
+            ...mapState(['topStories','night'])
         },
         methods: {
             //获取最新的消息

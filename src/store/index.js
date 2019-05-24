@@ -5,7 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        topStories: []
+        topStories: [],
+        night: false
     },
     actions: {
 
@@ -13,6 +14,9 @@ export default new Vuex.Store({
     mutations: {
         changeTopStories(state,data) {
             state.topStories = data
+        },
+        changeNight(state) {
+            state.night = !state.night
         }
     }
 
