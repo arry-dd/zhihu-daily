@@ -20,13 +20,14 @@ module.exports = {
             .set('home', resolve('src/components/home'))
             .set('src', resolve('src'))
             .set('styles', resolve('src/assets/styles'))
+            .set('store', resolve('src/store'))
     },
 
     pluginOptions: {
     //全局导入less
       'style-resources-loader': {
         preProcessor: 'less',
-        patterns: [path.resolve(__dirname, "src/assets/styles/variable.less")]
+        patterns: [resolve('src/assets/styles/variable.less')]
       }
     }
 }

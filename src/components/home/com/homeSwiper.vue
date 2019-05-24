@@ -12,7 +12,7 @@
 
 <script>
     import {swiper, swiperSlide} from 'vue-awesome-swiper';
-
+    import {mapState} from 'vuex'
     require('swiper/dist/css/swiper.css');
     export default {
         name: 'homeSwiper',
@@ -20,8 +20,8 @@
             swiper,
             swiperSlide
         },
-        props: {
-            topStories: Array
+        computed: {
+            ...mapState(['topStories'])
         },
         data() {
             return {

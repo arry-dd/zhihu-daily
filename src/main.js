@@ -11,6 +11,8 @@ import 'styles/border.css'
 //解决点击延迟问题
 import fastClick from 'fastclick';
 
+// 引入vuex
+import store from 'store/index'
 
 //引入阿里巴巴图标
 import 'styles/iconfont.css'
@@ -21,5 +23,6 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(App),
-  router
+  router,
+  store
 }).$mount('#app')

@@ -1,7 +1,7 @@
 <template>
     <div class="home">
         <home-header></home-header>
-        <home-swiper :topStories="topStories"></home-swiper>
+        <home-swiper></home-swiper>
         <home-news></home-news>
     </div>
 </template>
@@ -11,6 +11,7 @@
     import homeSwiper from 'home/com/homeSwiper'
     import homeNews from 'home/com/homeNews'
     import axios from 'axios'
+    import {mapState} from 'vuex'
 
     export default {
         name: 'Home',
@@ -19,10 +20,8 @@
             homeSwiper,
             homeNews
         },
-        data() {
-            return {
-                topStories: []
-            }
+        computed: {
+            ...mapState(['topStories'])
         },
         methods: {
             //获取最新的消息
@@ -33,7 +32,7 @@
             succ(ret) {
                 const data = ret.data
                 if (data.date) {
-                    this.topStories = data.top_stories
+                    this.$store.commit('changeTopStories',data.top_stories)
                 }
             }
         },
