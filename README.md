@@ -19,8 +19,16 @@
 
 
 ##踩坑
-一、首页轮播图
+###一、首页轮播图
 1. 当网页刷新，轮播图会跑到最后一页。分析原因：当ajax数据传过来，而轮播图已经滚动到最后一页了。解决方法，给轮播图一个v-if指令，当topStories为空数组时不显示。
 2. vue-awesome-swiper插件中的分页器是属于swiperSlide组件的，所以修改其样式需要使用穿透/deep/
+###二、首页新闻列表
+1. 滑动到底部请求更多的旧新闻，需要每次把上一个新闻的时间减一。相关算法如下
+`dec(count) {
+     let t = new Date();//你已知的时间
+     let t_s = t.getTime();//转化为时间戳毫秒数
+     let time = t.setTime(t_s - count*1000 * 60 * 60 * 24);//设置新时间比旧时间少count天
+     return time
+},`
 
 

@@ -1,16 +1,16 @@
 <template>
     <div class="home-news">
-        <ul class="news-latest">
-            <li class="news-date">今日新闻</li>
-            <li class="news-info" v-for="(item,index) in latestStories" :key="index">
-                <div class="news-info-desc">{{item.title}}</div>
+        <ul :class="ulLatestClass">
+            <li :class="newsDateClass">今日新闻</li>
+            <li :class="infoClass" v-for="(item,index) in latestStories" :key="index">
+                <div :class="descClass">{{item.title}}</div>
                 <img class="news-info-img" :src="item.images[0]">
             </li>
         </ul>
-        <ul class="news-past" v-for="(stores,index) in pastStories" :key="index">
-            <li class="news-date">{{newsDate[index]+' '+newsDay[index]}}</li>
-            <li class="news-info" v-for="(item,index) in stores" :key="index">
-                <div class="news-info-desc">{{item.title}}</div>
+        <ul :class="ulPastClass" v-for="(stores,index) in pastStories" :key="index">
+            <li :class="newsDateClass">{{newsDate[index]+' '+newsDay[index]}}</li>
+            <li :class="infoClass" v-for="(item,index) in stores" :key="index">
+                <div :class="descClass">{{item.title}}</div>
                 <img class="news-info-img" :src="item.images[0]">
             </li>
         </ul>
@@ -24,6 +24,38 @@
         name: 'homeNews',
         computed: {
             ...mapState(['latestStories', 'night', 'pastStories', 'newsDate', 'newsDay'])
+        },
+        data() {
+            return {
+                ulLatestClass: 'news-latest',
+                ulPastClass: 'news-past',
+                newsDateClass: 'news-date',
+                descClass: 'news-info-desc',
+                infoClass: 'news-info'
+            }
+        },
+        watch: {
+            //监听night进行夜间模式切换
+            night: function () {
+                this.isNight()
+            }
+        },
+        methods: {
+            isNight() {
+                if(this.night == true) {
+                    this.ulLatestClass = 'news-latest news-latest-night'
+                    this.ulPastClass = 'news-past news-past-night'
+                    this.newsDateClass = 'news-date news-date-night'
+                    this.descClass = 'news-info-desc news-info-desc-night'
+                    this.infoClass = 'news-info news-info-night'
+                } else {
+                    this.ulLatestClass = 'news-latest'
+                    this.ulPastClass = 'news-past'
+                    this.newsDateClass = 'news-date'
+                    this.descClass = 'news-info-desc'
+                    this.infoClass = 'news-info'
+                }
+            }
         }
     }
 
@@ -34,6 +66,9 @@
         background-color: @bgColor;
         text-align: center;
         overflow: hidden;
+        &.news-latest-night, &.news-past-night {
+            background-color: @bgColorNight;
+        }
     }
 
     .news-date {
@@ -43,6 +78,10 @@
         font-size: .28rem;
         padding-left: .3rem;
         color: @textColorClick;
+        &.news-date-night {
+            background-color: @bgColorNight;
+            color: @textColorClickNight;
+        }
     }
 
     .news-info {
@@ -54,6 +93,9 @@
         border-radius: .1rem;
         overflow: hidden;
         height: 0;
+        &.news-info-night {
+            background-color: @fWhiteNight;
+        }
 
         .news-info-img {
             width: 20%;
@@ -70,6 +112,9 @@
             color: @textColorUnclick;
             line-height: .35rem;
             text-align: left;
+            &.news-info-desc-night {
+                color: @textColorUnclickNight;
+            }
         }
     }
 </style>

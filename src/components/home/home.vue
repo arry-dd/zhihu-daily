@@ -90,7 +90,7 @@
                 }
             },
             //页面滚动到底部获取更多日期的新闻：
-            //把日期和星期减一，然后发ajax请求
+            //把日期减一，然后发ajax请求
             dateMinusOne() {
                 // if (parseInt(this.dateMinus) % 100 == 1) {
                 //     this.dateMinus = eval(this.dateMinus - 71)
@@ -99,22 +99,16 @@
                 // }
                 // console.log(this.dateMinus)
                 this.count++
-                function fun(count) {
-                    let t = new Date();//你已知的时间
-                    let t_s = t.getTime();//转化为时间戳毫秒数
-                    let time = t.setTime(t_s - count*1000 * 60 * 60 * 24);//设置新时间比旧时间少count天
-                    return time
-                }
-                let retTime = fun(this.count)
+                let retTime = this.dec(this.count)
                 let newYear = (new Date(retTime)).getFullYear()
                 let newMonth = (new Date(retTime)).getMonth()
                 let newDate = (new Date(retTime)).getDate()
                 let newDay = (new Date(retTime)).getDay()
-                console.log(newYear,newMonth,newDate,newDay)
+                // console.log(newYear,newMonth,newDate,newDay)
                 newMonth=newMonth<10?'0'+newMonth:newMonth
                 newDate=newDate<10?'0'+newDate:newDate
                 this.dateMinus = newYear+''+newMonth+''+newDate
-                console.log(this.dateMinus)
+                // console.log(this.dateMinus)
                 this.getPastNews()
                 // this.$store.dispatch('pushnewsDate', str)
                 // if (parseInt(this.weeks) <= 0) {
@@ -124,7 +118,14 @@
                 // }
                 let day = this.judgeDay(newDay)
                 // this.getPastNews()
-                // this.$store.dispatch('pushnewsDate', day)
+                this.$store.dispatch('pushNewsDay', day)
+            },
+            //日期减一的相关算法
+            dec(count) {
+                let t = new Date();//你已知的时间
+                let t_s = t.getTime();//转化为时间戳毫秒数
+                let time = t.setTime(t_s - count*1000 * 60 * 60 * 24);//设置新时间比旧时间少count天
+                return time
             },
             //监听屏幕滑动底部
             listenBottom() {
@@ -143,7 +144,7 @@
             //页面滚动到底部获取更多日期的新闻
             //这里必须用箭头函数，不然会改变this的指向
             window.addEventListener('scroll', this.listenBottom)
-            console.log(this.dateMinus)
+            // console.log(this.dateMinus)
         },
         deactivated() {
         //解除全局绑定
