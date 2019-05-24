@@ -27,13 +27,13 @@
             isNight() {
                 if(this.night == true) {
                     this.headerClass = 'header header-night'
-                    console.log('111')
                 } else {
                     this.headerClass = 'header'
                 }
             }
         },
         watch: {
+        //监听night进行夜间模式切换
             night: function () {
                 this.isNight()
             }
