@@ -21,7 +21,7 @@ export default  {
     },
     //新闻日期例如04月23日
     pushNewsDate(state,data) {
-        let month = data.slice(4,6)
+        let month = parseInt(data.slice(4,6))+1
         let date = data.slice(6)
         state.newsDate.push(month+'月'+date+'日')
     },

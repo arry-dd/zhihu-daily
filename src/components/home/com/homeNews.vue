@@ -8,8 +8,7 @@
             </li>
         </ul>
         <ul class="news-past" v-for="(stores,index) in pastStories" :key="index">
-            <li class="news-date">{{newsDate[index]}} 
-                {{newsDay[index]}}</li>
+            <li class="news-date">{{newsDate[index]+' '+newsDay[index]}}</li>
             <li class="news-info" v-for="(item,index) in stores" :key="index">
                 <div class="news-info-desc">{{item.title}}</div>
                 <img class="news-info-img" :src="item.images[0]">
@@ -24,7 +23,7 @@
     export default {
         name: 'homeNews',
         computed: {
-            ...mapState(['latestStories', 'night','pastStories','newsDate','newsDay'])
+            ...mapState(['latestStories', 'night', 'pastStories', 'newsDate', 'newsDay'])
         }
     }
 
@@ -36,6 +35,7 @@
         text-align: center;
         overflow: hidden;
     }
+
     .news-date {
         text-align: left;
         background-color: @bgColor;
