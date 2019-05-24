@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         topStories: [],
-        night: false
+        night: false,
+        latestStories: []
     },
     actions: {
 
@@ -17,6 +18,9 @@ export default new Vuex.Store({
         },
         changeNight(state) {
             state.night = !state.night
+        },
+        changelatest(state,data) {
+            state.latestStories = data
         }
     }
 

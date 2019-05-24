@@ -21,7 +21,7 @@
             homeNews
         },
         computed: {
-            ...mapState(['topStories','night'])
+            ...mapState(['topStories','night','latestStories'])
         },
         methods: {
             //获取最新的消息
@@ -33,6 +33,8 @@
                 const data = ret.data
                 if (data.date) {
                     this.$store.commit('changeTopStories',data.top_stories)
+                    console.log(data.stories)
+                    this.$store.commit('changelatest',data.stories)
                 }
             }
         },
