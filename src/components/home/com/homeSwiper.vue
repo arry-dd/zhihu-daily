@@ -52,7 +52,7 @@
         bottom: .1rem;
     }
     .home-swiper {
-        margin-top: 1.1rem;
+        margin-top: 15%;
     }
     .swiper-img {
         width: 100%;

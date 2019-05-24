@@ -52,14 +52,18 @@
         top: 0;
         left: 0;
         z-index: 5;
+        padding-top: 5%;
         &.header-night {
             background-color: @baseBlueColorNight;
         }
         div {
             display: inline-block;
-            height: 1.1rem;
-            line-height: 1.1rem;
+            /*height: 1.1rem;*/
+            /*line-height: 1.1rem;*/
+            padding-bottom: 10%;
+            height: 0;
             margin: 0 .25rem;
+            /*box-sizing: border-box;*/
         }
 
         .header-menu, .header-text {
@@ -75,7 +79,7 @@
         }
 
         .icon-alert {
-            font-size: .5rem;
+            font-size: .45rem;
         }
 
     }
