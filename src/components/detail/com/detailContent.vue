@@ -8,12 +8,13 @@
 
     export default {
         name: 'detailContent',
-        props: ['body','css'],
+        props: ['body'],
         mounted() {
-
+            // document.body.classList.add('dudu-night')
         }
     }
 </script>
 
 <style scoped>
+@import "~styles/detailContent.less";
 </style>

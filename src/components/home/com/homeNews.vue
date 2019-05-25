@@ -2,17 +2,17 @@
     <div class="home-news">
         <ul :class="ulLatestClass">
             <li :class="newsDateClass">今日新闻</li>
-            <li :class="infoClass" v-for="(item,index) in latestStories" :key="index">
+            <router-link :to="'/detail/'+item.id"  tag="li" :class="infoClass" v-for="(item,index) in latestStories" :key="index">
                 <div :class="descClass">{{item.title}}</div>
                 <img class="news-info-img" :src="item.images[0]">
-            </li>
+            </router-link>
         </ul>
         <ul :class="ulPastClass" v-for="(stores,index) in pastStories" :key="index">
             <li :class="newsDateClass">{{newsDate[index]+' '+newsDay[index]}}</li>
-            <li :class="infoClass" v-for="(item,index) in stores" :key="index">
+            <router-link :to="'/detail/'+item.id" tag="li" :class="infoClass" v-for="(item,index) in stores" :key="index">
                 <div :class="descClass">{{item.title}}</div>
                 <img class="news-info-img" :src="item.images[0]">
-            </li>
+            </router-link>
         </ul>
     </div>
 </template>

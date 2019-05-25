@@ -2,7 +2,7 @@
     <div class="detail">
         <detail-header></detail-header>
         <detail-img :image="image"></detail-img>
-        <detail-content :body="body" :css="css"></detail-content>
+        <detail-content :body="body"></detail-content>
     </div>
 </template>
 
@@ -21,8 +21,7 @@
                     title: '',
                     image_source: ''
                 },
-                body: '',
-                css: []
+                body: ''
             }
         },
         components: {
@@ -32,7 +31,7 @@
         },
         methods: {
             getDetailData() {
-                axios.get('/api/4/news/9711670')
+                axios.get('/api/4/news/'+this.$route.params.id)
                     .then(this.getDetailDataSucc)
             },
             getDetailDataSucc(ret) {
@@ -43,7 +42,6 @@
                     this.image.title = data.title
                     this.image.image_source = data.image_source
                     this.body = data.body
-                    this.css = data.css
                 }
             }
         },

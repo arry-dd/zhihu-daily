@@ -2,8 +2,8 @@
     <div class="home-swiper">
         <swiper class="swiper-content" :options="swiperOption" v-if="topStories.length">
             <swiper-slide v-for="item in topStories" :key="item.id">
-                <router-link tag="div" to="/detail" class="swiper-img" :style="{ backgroundImage: 'url(' +item.image+ ')' }"></router-link>
-                <div class="swiper-desc">{{item.title}}</div>
+                <router-link tag="div" :to="'/detail/'+item.id" class="swiper-img" :style="{ backgroundImage: 'url(' +item.image+ ')' }"></router-link>
+                <router-link tag="div" :to="'/detail/'+item.id" class="swiper-desc">{{item.title}}</router-link>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
