@@ -5,12 +5,26 @@
 </template>
 
 <script>
-
+    import {mapState} from 'vuex'
     export default {
         name: 'detailContent',
         props: ['body'],
+        computed: {
+            ...mapState(['night'])
+        },
+        methods: {
+            //判断是否夜间模式
+            changeNight() {
+                if(this.night) {
+                    document.body.classList.add('dudu-night')
+                }else {
+                    document.body.classList.remove('dudu-night')
+                }
+            }
+        },
         mounted() {
-            // document.body.classList.add('dudu-night')
+        //判断是否夜间模式
+            this.changeNight()
         }
     }
 </script>

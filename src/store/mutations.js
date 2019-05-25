@@ -28,5 +28,13 @@ export default  {
     //以前新闻日期的星期几
     pushNewsDay(state,data) {
         state.newsDay.push(data)
+    },
+    //detail额外的信息，如评论点赞数
+    changeExtraData(state,data) {
+        state.extraData = data
+    },
+    //点赞
+    changePopularity(state, data) {
+        state.extraData.popularity = data
     }
 }

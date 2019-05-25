@@ -1,24 +1,81 @@
 <template>
-    <div class="header">
-            <router-link to="/"  tag="div" class="header-back"><span class="iconfont icon-back">&#xe64c;</span></router-link>
-            <div class="header-like"><span class="iconfont icon-like">&#xe60c;</span>220</div>
-            <div class="header-comment"><span class="iconfont icon-comment">&#xe638;</span>38</div>
+    <div class="detail-header" :style="headerOpcity"  v-show="showHeader" ref="header">
+        <router-link to="/" tag="div" class="header-back"><span class="iconfont icon-back">&#xe64c;</span></router-link>
+        <div class="header-like" @click="clickLike"><span class="iconfont icon-like" ref="like">&#xe60c;</span>{{extraData.popularity}}</div>
+        <div class="header-comment"><span class="iconfont icon-comment">&#xe638;</span>{{extraData.comments}}</div>
         <div class="header-star"><span class="iconfont icon-star">&#xe61b;</span></div>
         <div class="header-share"><span class="iconfont icon-share">&#xe624;</span></div>
     </div>
 </template>
 
 <script>
-
+    import {mapState} from 'vuex'
     export default {
         name: 'detailHeader',
-        components: {
+        data() {
+            return {
+                headerOpcity: {
+                    opacity: 1
+                },
+                showHeader: true,
+                isLike: false
+            }
+        },
+        computed: {
+            ...mapState(['extraData'])
+        },
+        methods: {
+        //根据滑动的距离计算头部的透明度
+            changeHeaderOpacity() {
+                let top = document.documentElement.scrollTop
+                if (top < 120) {
+                    this.showHeader = true;
+                    top = top > 120 ? 120 : top;
+                    this.headerOpcity.opacity = (120-top) / 120;
+                } else {
+                    this.showHeader = false;
+                }
+            },
+        //判断是否夜间模式
+            changeNight() {
+                if(this.night) {
+                    document.body.classList.add('dudu-night')
+                }else {
+                    document.body.classList.remove('dudu-night')
+                }
+            },
+            //点赞
+            clickLike() {
+                this.isLike = !this.isLike
+            }
+        },
+        watch: {
+        //根据isLike改变vuex中extraData.popularity的值，并且添加或删除icon-is-like类
+            isLike(newVal) {
+                if(newVal) {
+                    this.$store.dispatch('changePopularity',this.extraData.popularity+1)
+                    this.$refs.like.classList.add('icon-is-like')
+                }else {
+                    this.$store.dispatch('changePopularity',this.extraData.popularity-1)
+                    this.$refs.like.classList.remove('icon-is-like')
+                }
+            }
+        },
+        mounted() {
+        //设置事件改变头部的透明度
+            window.addEventListener('scroll', this.changeHeaderOpacity)
+            //判断是否夜间模式
+            this.changeNight()
+        },
+        destroyed() {
+        //解除全局绑定
+            window.removeEventListener('scroll', this.changeHeaderOpacity)
         }
     }
 </script>
 
 <style scoped lang="less">
-    .header {
+    .detail-header {
         width: 100%;
         background-color: @baseBlueColor;
         overflow: hidden;
@@ -29,39 +86,35 @@
         left: 0;
         z-index: 5;
         padding-top: 5%;
-
-    &.header-night {
-         background-color: @baseBlueColorNight;
-     }
-
-    div {
-        display: inline-block;
-        /*height: 1.1rem;*/
-        /*line-height: 1.1rem;*/
-        padding-bottom: 10%;
-        height: 0;
-        margin: 0 .1rem;
-        /*box-sizing: border-box;*/
-        &.header-star, .header-share {
-            margin: 0 .35rem;
+        div {
+            display: inline-block;
+            padding-bottom: 10%;
+            height: 0;
+            margin: 0 .1rem;
+            &.header-star, .header-share {
+                margin: 0 .35rem;
+            }
         }
-    }
 
-    .header-back{
-        float: left;
-        margin: 0 0 0 .25rem;
-    }
+        .header-back {
+            float: left;
+            margin: 0 0 0 .25rem;
+        }
 
-    .header-comment, .header-like, .header-star, .header-share{
-        float: right;
-    }
-    .icon-comment, .icon-like {
-        margin-right: .1rem;
-    }
+        .header-comment, .header-like, .header-star, .header-share {
+            float: right;
+        }
 
-    /*.icon-comment {*/
-    /*    font-size: .5rem;*/
-    /*}*/
+        .icon-comment, .icon-like {
+            margin-right: .1rem;
+        }
 
+
+    }
+    .dudu-night .detail-header {
+        background-color: @baseBlueColorNight;
+    }
+    .icon-is-like {
+        color: @likeColor;
     }
 </style>

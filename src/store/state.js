@@ -15,5 +15,7 @@ export default {
     //以前新闻日期例如04月23日
     newsDate: [],
     //以前新闻日期的星期几
-    newsDay: []
+    newsDay: [],
+    //detail额外的信息，如评论点赞数
+    extraData: {}
 }

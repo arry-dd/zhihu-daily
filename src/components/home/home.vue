@@ -141,6 +141,8 @@
             this.getDate(new Date())
             this.dateMinus = this.date
             this.getPastNews()
+        },
+        activated() {
             //页面滚动到底部获取更多日期的新闻
             //这里必须用箭头函数，不然会改变this的指向
             window.addEventListener('scroll', this.listenBottom)

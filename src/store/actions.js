@@ -22,5 +22,13 @@ export default {
     //以前的新闻日期的星期几
     pushNewsDay(ctx, data) {
         ctx.commit('pushNewsDay', data)
+    },
+    //detail额外的信息，如评论点赞数
+    changeExtraData(ctx, data) {
+        ctx.commit('changeExtraData', data)
+    },
+    //点赞
+    changePopularity(ctx, data) {
+        ctx.commit('changePopularity', data)
     }
 }
