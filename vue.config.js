@@ -23,6 +23,7 @@ module.exports = {
             .set('store', resolve('src/store'))
             .set('common', resolve('src/components/common'))
             .set('detail', resolve('src/components/detail'))
+            .set('comment', resolve('src/components/comment'))
     },
 
     pluginOptions: {

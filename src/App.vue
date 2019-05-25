@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-  <keep-alive exclude="detail">
+  <keep-alive :exclude="['detail','comment']">
     <router-view></router-view>
   </keep-alive>
   </div>

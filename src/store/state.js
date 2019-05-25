@@ -1,6 +1,3 @@
-
-
-
 export default {
     // 轮播图的信息
     topStories: [],
@@ -19,5 +16,7 @@ export default {
     //detail额外的信息，如评论点赞数
     extraData: {},
     //分享组件的显示
-    showShare: false
+    showShare: false,
+    //长评论
+    longComment: []
 }

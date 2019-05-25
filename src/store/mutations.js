@@ -40,5 +40,9 @@ export default  {
     //分享组件的显示
     changeShowShare(state) {
         state.showShare = !state.showShare
+    },
+    //改变长评论的内容
+    changeLongComment(state,data) {
+        state.longComment = data
     }
 }

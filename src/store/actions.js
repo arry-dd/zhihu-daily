@@ -34,5 +34,10 @@ export default {
     //分享组件的显示
     changeShowShare(ctx) {
         ctx.commit('changeShowShare')
+    },
+    //改变长评论的内容
+    changeLongComment(ctx, data) {
+        ctx.commit('changeLongComment',data)
     }
+
 }

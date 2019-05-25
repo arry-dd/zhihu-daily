@@ -2,7 +2,7 @@
     <div class="detail-header" :style="headerOpcity"  v-show="showHeader" ref="header">
         <router-link to="/" tag="div" class="header-back"><span class="iconfont icon-back">&#xe64c;</span></router-link>
         <div class="header-like" @click="clickLike"><span class="iconfont icon-like" ref="like">&#xe60c;</span>{{extraData.popularity}}</div>
-        <div class="header-comment"><span class="iconfont icon-comment">&#xe638;</span>{{extraData.comments}}</div>
+        <router-link :to="'/comment/'+this.$route.params.id" tag="div" class="header-comment"><span class="iconfont icon-comment">&#xe638;</span>{{extraData.comments}}</router-link>
         <div class="header-star" @click="changeStar"><span class="iconfont icon-star"  ref="star">&#xe61b;</span></div>
         <div class="header-share" @click="showShareClick"><span class="iconfont icon-share">&#xe624;</span></div>
     </div>
