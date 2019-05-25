@@ -36,5 +36,9 @@ export default  {
     //点赞
     changePopularity(state, data) {
         state.extraData.popularity = data
+    },
+    //分享组件的显示
+    changeShowShare(state) {
+        state.showShare = !state.showShare
     }
 }

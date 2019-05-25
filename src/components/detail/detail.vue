@@ -3,6 +3,10 @@
         <detail-header></detail-header>
         <detail-img :image="image"></detail-img>
         <detail-content :body="body"></detail-content>
+        <fade-animation>
+            <detail-share v-show="showShare"></detail-share>
+        </fade-animation>
+
     </div>
 </template>
 
@@ -11,7 +15,10 @@
     import detailHeader from 'detail/com/detailHeader'
     import detailImg from 'detail/com/detailImg'
     import detailContent from 'detail/com/detailContent'
+    import detailShare from 'detail/com/detailShare'
+    import fadeAnimation from 'common/fadeAnimation'
     import {mapState} from 'vuex'
+
     export default {
         name: 'detail',
         data() {
@@ -25,17 +32,19 @@
             }
         },
         computed: {
-            ...mapState(['extraData'])
+            ...mapState(['extraData', 'showShare'])
         },
         components: {
             detailHeader,
             detailImg,
-            detailContent
+            detailContent,
+            detailShare,
+            fadeAnimation
         },
         methods: {
-        //根据url的id进行对具体新闻内容的请求
+            //根据url的id进行对具体新闻内容的请求
             getDetailData() {
-                axios.get('/api/4/news/'+this.$route.params.id)
+                axios.get('/api/4/news/' + this.$route.params.id)
                     .then(this.getDetailDataSucc)
             },
             getDetailDataSucc(ret) {
@@ -49,13 +58,13 @@
             },
             //根据url的id进行对具体新闻额外内容的请求，例如评论和点赞数
             getDetailExtraData() {
-                axios.get('/api/4/story-extra/'+this.$route.params.id)
+                axios.get('/api/4/story-extra/' + this.$route.params.id)
                     .then(this.getDetailExtraDataSucc)
             },
             getDetailExtraDataSucc(ret) {
                 const data = ret.data
                 if (data) {
-                   this.$store.dispatch('changeExtraData',data)
+                    this.$store.dispatch('changeExtraData', data)
                 }
             }
         },

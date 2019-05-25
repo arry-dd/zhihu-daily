@@ -104,6 +104,7 @@
             padding: 0;
             vertical-align: middle;
             margin: .18rem .3rem .18rem 0;
+            opacity: 1!important;
         }
 
         .news-info-desc {

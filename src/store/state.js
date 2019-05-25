@@ -17,5 +17,7 @@ export default {
     //以前新闻日期的星期几
     newsDay: [],
     //detail额外的信息，如评论点赞数
-    extraData: {}
+    extraData: {},
+    //分享组件的显示
+    showShare: false
 }

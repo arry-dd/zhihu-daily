@@ -30,5 +30,9 @@ export default {
     //点赞
     changePopularity(ctx, data) {
         ctx.commit('changePopularity', data)
+    },
+    //分享组件的显示
+    changeShowShare(ctx) {
+        ctx.commit('changeShowShare')
     }
 }
