@@ -44,5 +44,9 @@ export default  {
     //改变长评论的内容
     changeLongComment(state,data) {
         state.longComment = data
+    },
+    //改变长评论的内容
+    changeShortComment(state,data) {
+        state.shortComment = data
     }
 }

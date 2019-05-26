@@ -4,6 +4,7 @@
             <swiper-slide v-for="item in topStories" :key="item.id">
                 <router-link tag="div" :to="'/detail/'+item.id" class="swiper-img" :style="{ backgroundImage: 'url(' +item.image+ ')' }"></router-link>
                 <router-link tag="div" :to="'/detail/'+item.id" class="swiper-desc">{{item.title}}</router-link>
+                <div class="swiper-content-mask"></div>
             </swiper-slide>
             <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
@@ -53,22 +54,34 @@
     }
     .home-swiper {
         margin-top: 15%;
-    }
-    .swiper-img {
+        position: relative;
         width: 100%;
-        padding-bottom: 50%;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-    }
+        overflow: hidden;
+        .swiper-img {
+            width: 100%;
+            padding-bottom: 50%;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
 
-    .swiper-desc {
-        position: absolute;
-        bottom: .3rem;
-        color: @fWhite;
-        font-size: .4rem;
-        margin: 0 .3rem;
-        line-height: .5rem;
+        .swiper-desc {
+            position: absolute;
+            bottom: .3rem;
+            color: @fWhite;
+            font-size: .35rem;
+            margin: 0 .3rem;
+            line-height: .4rem;
+            z-index: 2;
+        }
+        .swiper-content-mask {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            padding-bottom: 15%;
+            background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.7));
+        }
+
     }
 
 

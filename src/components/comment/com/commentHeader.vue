@@ -7,9 +7,26 @@
 </template>
 
 <script>
-
+    import {mapState} from 'vuex'
     export default {
-        name: 'commentHeader'
+        name: 'commentHeader',
+        mounted() {
+            //判断是否夜间模式
+            this.changeNight()
+        },
+        methods: {
+            //判断是否夜间模式
+            changeNight() {
+                if(this.night) {
+                    document.body.classList.add('dudu-night')
+                }else {
+                    document.body.classList.remove('dudu-night')
+                }
+            }
+        },
+        computed: {
+            ...mapState(['night'])
+        }
     }
 </script>
 
@@ -57,5 +74,8 @@
         }
 
 
+    }
+    .dudu-night .comment-header {
+        background-color: @baseBlueColorNight;
     }
 </style>

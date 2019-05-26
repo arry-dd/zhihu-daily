@@ -26,10 +26,21 @@
                 if(data.comments) {
                     this.$store.dispatch('changeLongComment',data.comments)
                 }
+            },
+            getShortComment() {
+                axios.get('/api/4/story/'+this.$route.params.id+'/short-comments')
+                    .then(this.getShortCommentSucc)
+            },
+            getShortCommentSucc(ret) {
+                const data = ret.data
+                if(data.comments) {
+                    this.$store.dispatch('changeShortComment',data.comments)
+                }
             }
         },
         mounted() {
             this.getLongComment()
+            this.getShortComment()
         }
     }
 </script>

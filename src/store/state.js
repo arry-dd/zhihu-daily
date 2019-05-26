@@ -18,5 +18,7 @@ export default {
     //分享组件的显示
     showShare: false,
     //长评论
-    longComment: []
+    longComment: [],
+    //短评论
+    shortComment: []
 }

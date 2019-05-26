@@ -37,7 +37,11 @@ export default {
     },
     //改变长评论的内容
     changeLongComment(ctx, data) {
-        ctx.commit('changeLongComment',data)
+        ctx.commit('changeLongComment', data)
+    },
+    //改变长评论的内容
+    changeShortComment(ctx, data) {
+        ctx.commit('changeShortComment', data)
     }
 
 }
