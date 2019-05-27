@@ -3,7 +3,7 @@
         <div class="img" :style="{ backgroundImage: 'url(' +image.url[0]+ ')' }"></div>
         <div class="detail-title">{{image.title}}</div>
         <div class="detail-source">{{image.image_source}}</div>
-        <div class="detail-img-mask"></div>
+        <div class="detail-img-mask" v-show="image.url.length"></div>
     </div>
 </template>
 

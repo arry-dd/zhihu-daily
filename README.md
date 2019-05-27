@@ -6,6 +6,7 @@
 `<meta name="referrer" content="never">`
 详细说明请看[这里](https://www.cnblogs.com/dongcanliang/archive/2017/04/01/6655061.html)
 3. 知乎日报api获取数据时ajax存在跨域问题，所以我使用devServer的proxy解决。
+4. 使用fastclick解决移动端中click事件延迟问题，可以愉快地使用click
 `devServer: {
         port: 5000,
         proxy: {

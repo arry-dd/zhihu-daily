@@ -24,7 +24,7 @@
         </ul>
         <div class="no-longComment" v-if="!longComment.length">
             <div class="no-longComment-content">
-                <div class="no-longComment-content-sofa"><span class="iconfont">&#xe63b;</span> </div>
+                <div class="no-longComment-content-sofa"><span class="iconfont">&#xe63b;</span></div>
                 <div class="no-longComment-content-text">深度长评虚位以待</div>
             </div>
         </div>
@@ -59,7 +59,7 @@
     export default {
         name: 'longComment',
         computed: {
-            ...mapState(['longComment', 'shortComment'])
+            ...mapState(['longComment', 'shortComment','night'])
         },
         data() {
             return {
@@ -91,26 +91,61 @@
             //点击显示短评
             showShort() {
                 this.FlagShowShortComment = true
+            },
+            //判断是否夜间模式
+            changeNight() {
+                if(this.night) {
+                    document.body.classList.add('dudu-night')
+                }else {
+                    document.body.classList.remove('dudu-night')
+                }
             }
+        },
+        mounted() {
+            //判断是否夜间模式
+            this.changeNight()
         }
     }
 </script>
 
 <style scoped lang="less">
+    .dudu-night .comment{
+        background-color: @fWhiteNight!important;
+    }
+    .dudu-night .long-comment-title, .short-comment-title {
+        color: @commentNameNight!important;
+    }
+    .dudu-night .content-text-author, .content-text-reply b{
+        color: @commentNameNight!important;
+    }
+    .dudu-night  .long-comment-content, .short-comment-content {
+        border-bottom: 0.02rem solid @commentBorderNight!important;
+    }
+    .dudu-night .long-comment-title, .short-comment-title {
+        border-bottom: 0.02rem solid @commentBorderNight!important;
+    }
+    .dudu-night .content-text-conent {
+        color: @commentTextNight!important;
+    }
+    .dudu-night .no-longComment-content {
+        color: @sofaNight!important;
+    }
     .comment {
         margin-top: 15%;
         width: 100%;
-        height: 0;
+        background-color: @fWhite;
+        position: absolute;
+        min-height: 100%;
         .long-comment-title, .short-comment-title {
             padding-bottom: 8%;
             overflow: hidden;
-            /*background-color: pink;*/
             height: 0;
             padding-top: 4%;
             padding-left: 4%;
             font-size: .25rem;
             color: @commentContentLight;
             border-bottom: 0.02rem solid @commentBorder;
+            font-weight: 700;
         }
 
         .long-comment-ul, .short-comment-ul {
@@ -119,7 +154,7 @@
             .long-comment-content, .short-comment-content {
                 display: flex;
                 border-bottom: 0.02rem solid @commentBorder;
-                margin-left: 5%;
+                padding-left: 5%;
 
                 .content-img {
                     width: 10%;
@@ -188,27 +223,32 @@
             }
 
         }
+
         .no-longComment {
             width: 100%;
             margin: 0 auto;
             height: 8.5rem;
             position: relative;
             vertical-align: middle;
+
             .no-longComment-content {
                 width: 40%;
                 position: absolute;
                 left: 50%;
                 top: 50%;
-                transform: translate(-50%,-50%);
+                transform: translate(-50%, -50%);
                 text-align: center;
                 color: @sofa;
-                .no-longComment-content-sofa span{
+
+                .no-longComment-content-sofa span {
                     font-size: 2rem;
                 }
+
                 .no-longComment-content-text {
                     margin-top: .2rem;
                 }
             }
         }
     }
+
 </style>
