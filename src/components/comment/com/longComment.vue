@@ -112,16 +112,16 @@
     .dudu-night .comment{
         background-color: @fWhiteNight!important;
     }
-    .dudu-night .long-comment-title, .short-comment-title {
+    .dudu-night .long-comment-title, .dudu-night .short-comment-title {
         color: @commentNameNight!important;
     }
-    .dudu-night .content-text-author, .content-text-reply b{
+    .dudu-night .content-text-author,.dudu-night .content-text-reply b{
         color: @commentNameNight!important;
     }
-    .dudu-night  .long-comment-content, .short-comment-content {
+    .dudu-night  .long-comment-content, .dudu-night .short-comment-content {
         border-bottom: 0.02rem solid @commentBorderNight!important;
     }
-    .dudu-night .long-comment-title, .short-comment-title {
+    .dudu-night .long-comment-title, .dudu-night .short-comment-title {
         border-bottom: 0.02rem solid @commentBorderNight!important;
     }
     .dudu-night .content-text-conent {

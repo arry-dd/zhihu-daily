@@ -1,5 +1,6 @@
 <template>
     <div class="home">
+        <side-bar></side-bar>
         <home-header></home-header>
         <home-swiper></home-swiper>
         <home-news></home-news>
@@ -10,6 +11,7 @@
     import homeHeader from 'home/com/homeHeader'
     import homeSwiper from 'home/com/homeSwiper'
     import homeNews from 'home/com/homeNews'
+    import sideBar from 'home/com/sideBar'
     import axios from 'axios'
     import {mapState} from 'vuex'
 
@@ -18,7 +20,8 @@
         components: {
             homeHeader,
             homeSwiper,
-            homeNews
+            homeNews,
+            sideBar
         },
         data() {
             return {
