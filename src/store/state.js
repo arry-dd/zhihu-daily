@@ -20,5 +20,7 @@ export default {
     //长评论
     longComment: [],
     //短评论
-    shortComment: []
+    shortComment: [],
+    //收藏的id
+    collectId:[]
 }

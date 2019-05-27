@@ -42,6 +42,13 @@ export default {
     //改变长评论的内容
     changeShortComment(ctx, data) {
         ctx.commit('changeShortComment', data)
+    },
+    //添加收藏id
+    addCollectId(ctx, data) {
+        ctx.commit('addCollectId', data)
+    },
+    //删除指定的收藏id
+    removeCollectId(ctx, data) {
+        ctx.commit('removeCollectId', data)
     }
-
 }

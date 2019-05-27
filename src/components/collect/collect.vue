@@ -2,18 +2,21 @@
     <div class="collect">
         <side-bar v-show="flagShowSideBar" @closeSideBar="closeSideBar"></side-bar>
         <collect-header @showSideBar="showSideBar"></collect-header>
+        <collect-content></collect-content>
     </div>
 </template>
 
 <script>
     import collectHeader from 'collect/com/collectHeader'
     import sideBar from 'home/com/sideBar'
+    import collectContent from 'collect/com/collectContent'
 
     export default {
         name: 'collect',
         components: {
             collectHeader,
-            sideBar
+            sideBar,
+            collectContent
         },
         data() {
             return {
