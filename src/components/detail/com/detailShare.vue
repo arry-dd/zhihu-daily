@@ -58,7 +58,6 @@
             padding-bottom: 85%;
             width: 90%;
             background-color: @fWhite;
-            /*background-color: lightgreen;*/
             height: 0;
             margin: auto;
             position: absolute;
@@ -117,9 +116,12 @@
         }
     }
     .dudu-night .share-box {
-        background-color: @shareBoxNight;
+        background-color: @shareBoxNight!important;
     }
     .dudu-night li {
-        color: @shareText;
+        color: @shareTextNight!important;
+    }
+    .dudu-night .share-text {
+        color: @fWhite!important;
     }
 </style>

@@ -1,7 +1,7 @@
 <template>
     <div class="home">
-        <side-bar></side-bar>
-        <home-header></home-header>
+        <side-bar v-show="flagShowSideBar" @closeSideBar="closeSideBar"></side-bar>
+        <home-header @showSideBar="showSideBar"></home-header>
         <home-swiper></home-swiper>
         <home-news></home-news>
     </div>
@@ -27,7 +27,9 @@
             return {
                 dateMinus: 0,//ajax获取数据的日期
                 // weeks: 0,
-                count: 0
+                count: 0,
+                //是否显示侧边栏的标记
+                flagShowSideBar: false
             }
         },
         computed: {
@@ -137,6 +139,14 @@
                 if (html.scrollHeight - html.offsetHeight - html.scrollTop < 5) {
                     this.dateMinusOne()
                 }
+            },
+            //头部的菜单按钮点击后，显示侧边栏
+            showSideBar() {
+                this.flagShowSideBar = true
+            },
+            //关闭侧边栏
+            closeSideBar () {
+                this.flagShowSideBar = false
             }
         },
         mounted() {
@@ -149,7 +159,8 @@
             //页面滚动到底部获取更多日期的新闻
             //这里必须用箭头函数，不然会改变this的指向
             window.addEventListener('scroll', this.listenBottom)
-            // console.log(this.dateMinus)
+            //从收藏页面跳转到主页时关闭侧边栏
+            this.flagShowSideBar = false
         },
         deactivated() {
         //解除全局绑定

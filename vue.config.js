@@ -24,6 +24,7 @@ module.exports = {
             .set('common', resolve('src/components/common'))
             .set('detail', resolve('src/components/detail'))
             .set('comment', resolve('src/components/comment'))
+            .set('collect', resolve('src/components/collect'))
     },
 
     pluginOptions: {

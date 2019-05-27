@@ -1,7 +1,7 @@
 <template>
     <div>
         <div :class="headerClass">
-            <div class="header-menu"><span class="iconfont icon-menu">&#xe605;</span></div>
+            <div class="header-menu" @click="showSideBar"><span class="iconfont icon-menu">&#xe605;</span></div>
             <div class="header-text">首页</div>
             <div class="header-set" @click="settingShow"><span class="iconfont icon-set">&#xe6a9;</span></div>
             <div class="header-alert"><span class="iconfont icon-alert">&#xe794;</span></div>
@@ -50,8 +50,13 @@
                     this.headerClass = 'header'
                 }
             },
+            //是否显示设置栏
             settingShow() {
                 this.flagSettingShow = !this.flagSettingShow
+            },
+            //点击菜单按钮，向父组件发送要显示侧边栏的请求
+            showSideBar() {
+                this.$emit('showSideBar')
             }
         },
         watch: {

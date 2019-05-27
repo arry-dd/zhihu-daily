@@ -37,7 +37,7 @@
                     this.showHeader = false;
                 }
             },
-        //判断是否夜间模式
+        //判断是否夜间模式,添加dudu-night类名
             changeNight() {
                 if(this.night) {
                     document.body.classList.add('dudu-night')
