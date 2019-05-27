@@ -3,11 +3,11 @@
 ##说明
 1. 图标使用阿里巴巴的Iconfont
 2. 由于知乎日报api图片url存在防盗链的问题，所以我在index.html文件中添加了以下标签
-`<meta name="referrer" content="never">`
-详细说明请看[这里](https://www.cnblogs.com/dongcanliang/archive/2017/04/01/6655061.html)
+  `<meta name="referrer" content="never">`
+  详细说明请看[这里](https://www.cnblogs.com/dongcanliang/archive/2017/04/01/6655061.html)
 3. 知乎日报api获取数据时ajax存在跨域问题，所以我使用devServer的proxy解决。
 4. 使用fastclick解决移动端中click事件延迟问题，可以愉快地使用click
-`devServer: {
+  `devServer: {
         port: 5000,
         proxy: {
             '/api': {
@@ -16,7 +16,26 @@
             }
         }
     }`
-4. 项目的数据存储在vuex中。
+5. 项目的数据存储在vuex中。为了防止页面属性数据丢失，决定用用sessionStorage来保存state里的数据。在App.vue中添加如下代码
+  
+
+  ```javascript
+  //解决页面刷新vuex数据丢失的问题
+          created() {
+              //在页面加载时读取sessionStorage里的状态信息
+              if (sessionStorage.getItem("store")) {
+                  this.$store.replaceState(Object.assign({}, this.$store.state, JSON.parse(sessionStorage.getItem("store"))))
+              }
+  
+              //在页面刷新时将vuex里的信息保存到sessionStorage里
+              window.addEventListener("beforeunload", () => {
+                  sessionStorage.setItem("store", JSON.stringify(this.$store.state))
+              })
+          }
+      }
+  ```
+  
+  
 
 
 ##踩坑
