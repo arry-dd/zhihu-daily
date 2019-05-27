@@ -41,7 +41,7 @@
         methods: {
             changeColor() {
                 this.$store.commit('changeNight')
-                this.flagSettingShow = false
+                // this.flagSettingShow = false
             },
             isNight() {
                 if (this.night == true) {

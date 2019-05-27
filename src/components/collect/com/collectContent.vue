@@ -1,47 +1,39 @@
 <template>
     <div class="collect-content">
         <ul class="collect-ul">
-            <li class="collect-info" v-for="(item,index) in collectList" :key="index">
+            <router-link tag="li" :to="'/detail/'+item.id" class="collect-info" v-for="(item,index) in collectList"
+                         :key="index">
                 <div class="collect-info-desc">{{item.title}}</div>
                 <img class="collect-info-img" :src="item.image">
-            </li>
+            </router-link>
         </ul>
     </div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
-    import axios from 'axios'
 
     export default {
         name: 'collectContent',
-        computed: {
-            ...mapState(['collectId'])
-        },
-        data() {
-            return {
-                collectList: []
-            }
+        props: ['collectList'],
+        mounted() {
+            //判断是否夜间模式
+            this.changeNight()
         },
         methods: {
-            getColletInfo() {
-                let len = this.collectId.length
-                for (let i = 0; i < len; i++) {
-                    axios.get('/api/4/news/' + this.collectId[i])
-                        .then(this.getColletInfoSucc)
-                }
-            },
-            getColletInfoSucc(ret) {
-                if (ret.data) {
-                    this.collectList.push(ret.data)
+            //判断是否夜间模式,添加dudu-night类名
+            changeNight() {
+                if (this.night) {
+                    document.body.classList.add('dudu-night')
+                } else {
+                    document.body.classList.remove('dudu-night')
                 }
             }
         },
-        mounted() {
-            this.getColletInfo()
-            //清空
-            this.collectList = []
+        computed: {
+            ...mapState(['night'])
         }
+
     }
 </script>
 
@@ -56,10 +48,6 @@
         .collect-ul {
             text-align: center;
             overflow: hidden;
-
-            &.collect-ul-night, &.news-past-night {
-                background-color: @bgColorNight;
-            }
         }
 
         .collect-info {
@@ -71,10 +59,6 @@
             border-radius: .1rem;
             overflow: hidden;
             height: 0;
-
-            &.collect-info-night {
-                background-color: @fWhiteNight;
-            }
 
             .collect-info-img {
                 width: 20%;
@@ -92,11 +76,23 @@
                 color: @textColorUnclick;
                 line-height: .35rem;
                 text-align: left;
-
-                &.collect-info-desc-night {
-                    color: @textColorUnclickNight;
-                }
             }
         }
+    }
+
+    .dudu-night .collect-ul {
+        background-color: @bgColorNight !important;
+    }
+
+    .dudu-night .collect-info {
+        background-color: @fWhiteNight !important;
+    }
+
+    .dudu-night .collect-info-desc {
+        color: @textColorUnclickNight !important;
+    }
+
+    .dudu-night .collect-content {
+        background-color: @bgColorNight !important;
     }
 </style>

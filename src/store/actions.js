@@ -50,5 +50,13 @@ export default {
     //删除指定的收藏id
     removeCollectId(ctx, data) {
         ctx.commit('removeCollectId', data)
+    },
+    //添加收藏id
+    addLikeId(ctx, data) {
+        ctx.commit('addLikeId', data)
+    },
+    //删除指定的收藏id
+    removeLikeId(ctx, data) {
+        ctx.commit('removeLikeId', data)
     }
 }

@@ -22,5 +22,7 @@ export default {
     //短评论
     shortComment: [],
     //收藏的id
-    collectId:[]
+    collectId: [],
+    //点赞的id
+    likeId: []
 }

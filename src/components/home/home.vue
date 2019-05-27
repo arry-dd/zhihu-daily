@@ -170,16 +170,6 @@
 </script>
 
 <style scoped lang="less">
-    .dv {
-        height: 50rem;
-    }
 
-    input {
-        position: fixed;
-        z-index: 999;
-        top: 200px;
-        width: 100%;
-        height: 50px;
-    }
 </style>
 

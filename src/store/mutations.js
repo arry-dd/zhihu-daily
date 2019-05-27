@@ -55,7 +55,7 @@ export default {
     },
     //删除指定的收藏id
     removeCollectId(state, data) {
-    //为数组原型添加一个删除的方法
+        //为数组原型添加一个删除的方法
         Array.prototype.remove = function (val) {
             let index = this.indexOf(val);
             if (index > -1) {
@@ -63,6 +63,21 @@ export default {
             }
         };
         state.collectId.remove(data)
+    },
+    //添加收藏id
+    addLikeId(state, data) {
+        state.likeId.push(data)
+    },
+    //删除指定的收藏id
+    removeLikeId(state, data) {
+        //为数组原型添加一个删除的方法
+        Array.prototype.remove = function (val) {
+            let index = this.indexOf(val);
+            if (index > -1) {
+                this.splice(index, 1);
+            }
+        };
+        state.likeId.remove(data)
     }
 
 }

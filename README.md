@@ -36,4 +36,12 @@
 1. 弹出分享框时，滑动遮罩层，仍可以滑动页面，解决方案：
 在遮罩层元素添加`@touchmove.prevent`
 
+###收藏页
+1. 当从收藏页进入收藏新闻的详细页面时，点击返回键需要判断是返回收藏页还是主页面。查阅vue-router文档发现在导航完成前获取数据可以使用beforeRouteEnter。其中from.path是上一页的路由路径。在调试中出现了一个问题，from.path不能赋值给data中的数据。原因是在beforeRouteEnter中this不指向Vue实例。解决方法如下
+`beforeRouteEnter (to, from, next) {
+             next(vm => {
+                 vm.prevParams = from.path
+             });
+         }`
+
 
