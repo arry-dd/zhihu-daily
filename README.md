@@ -18,7 +18,6 @@
  ##功能
  1. 首页
     轮播图、今日新闻、往日新闻、页面跳转、收藏侧边栏
-    ![首页](https://github.com/arry-dd/gif/blob/master/%E9%A6%96%E9%A1%B5.gif''首页'')
  2. 详情页
     图片、详细新闻、收藏、点赞、头部透明度变化
  3. 收藏页面
@@ -27,7 +26,8 @@
     查看长短评论、发表评论
  5. 其他
     sessionStorage和vuex存储、夜间模式
-     
+ 
+ 详细的[gif](https://github.com/arry-dd/gif)在这里   
    
 ##说明
 1. 图标使用阿里巴巴的Iconfont
