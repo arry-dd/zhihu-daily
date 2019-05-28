@@ -4,9 +4,9 @@
             <div class="content-top">
                 <div class="content-top-user">
                     <div class="content-top-user-head">
-                        <img src="http://pic1.zhimg.com/332ae97ce262070a56958a2bedf3f64c_im.jpg">
+                        <img :src="user.head">
                     </div>
-                    <div class="content-top-user-name"><p>知了个乎</p></div>
+                    <div class="content-top-user-name"><p>{{user.id}}</p></div>
                 </div>
                 <div class="content-top-two">
                     <div @click="goToCollect" class="content-top-two-star"><span class="iconfont">&#xe61b;</span>我的收藏</div>
@@ -54,7 +54,7 @@
             }
         },
         computed: {
-            ...mapState(['night'])
+            ...mapState(['night','user'])
         },
         watch: {
             night() {

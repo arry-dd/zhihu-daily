@@ -96,7 +96,13 @@
             },
             //点击返回键，根据上一页的路由路径返回上一页
             back() {
-                this.$router.push(this.prevParams)
+                if(this.prevParams == '/collect') {
+                    this.$router.push('/collect')
+                } else {
+                    this.$router.push('/')
+                }
+
+
             }
         },
         // watch: {

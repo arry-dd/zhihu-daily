@@ -1,5 +1,26 @@
 <template>
     <div class="comment">
+<!--    我的评论区-->
+        <div class="my-comment-title" @click="showShort">我的评论</div>
+        <ul class="my-comment-ul">
+            <li class="my-comment-content" v-for="(item,index) in thisIdMyComment" :key="index">
+                <div class="content-img">
+                    <img :src="item.head">
+                </div>
+                <div class="content-text">
+                    <div class="content-text-top">
+                        <div class="content-text-author">{{item.name}}</div>
+                        <div class="content-text-like"><span class="iconfont icon-like">&#xe60c;</span>0
+                        </div>
+                    </div>
+                    <div class="content-text-centre">
+                        <div class="content-text-conent">{{item.comment}}</div>
+                    </div>
+                    <div class="content-text-bottom">{{item.time}}</div>
+                </div>
+            </li>
+        </ul>
+<!--        长评论区-->
         <div class="long-comment-title">{{longComment.length}} 条长评</div>
         <ul class="long-comment-ul">
             <li class="long-comment-content" v-for="(item,index) in longComment" :key="index">
@@ -28,6 +49,7 @@
                 <div class="no-longComment-content-text">深度长评虚位以待</div>
             </div>
         </div>
+<!--        短评区-->
         <div class="short-comment-title" @click="showShort">{{shortComment.length}} 条短评</div>
         <ul class="short-comment-ul" v-if="FlagShowShortComment">
             <li class="short-comment-content" v-for="(item,index) in shortComment" :key="index">
@@ -59,7 +81,17 @@
     export default {
         name: 'longComment',
         computed: {
-            ...mapState(['longComment', 'shortComment','night'])
+            ...mapState(['longComment', 'shortComment','night','myComment']),
+            //遍历myComment把本id的评论放入thisIdMyComment中
+            thisIdMyComment() {
+                let arr = [];
+                this.myComment.forEach((value) => {
+                    if (value.id == this.$route.params.id) {
+                        arr.push(value)
+                    }
+                })
+                return arr
+            }
         },
         data() {
             return {
@@ -112,16 +144,16 @@
     .dudu-night .comment{
         background-color: @fWhiteNight!important;
     }
-    .dudu-night .long-comment-title, .dudu-night .short-comment-title {
+    .dudu-night .long-comment-title, .dudu-night .short-comment-title,.dudu-night .my-comment-title{
         color: @commentNameNight!important;
     }
     .dudu-night .content-text-author,.dudu-night .content-text-reply b{
         color: @commentNameNight!important;
     }
-    .dudu-night  .long-comment-content, .dudu-night .short-comment-content {
+    .dudu-night  .long-comment-content, .dudu-night .short-comment-content, .dudu-night .my-comment-content {
         border-bottom: 0.02rem solid @commentBorderNight!important;
     }
-    .dudu-night .long-comment-title, .dudu-night .short-comment-title {
+    .dudu-night .long-comment-title, .dudu-night .short-comment-title, .dudu-night .my-comment-title{
         border-bottom: 0.02rem solid @commentBorderNight!important;
     }
     .dudu-night .content-text-conent {
@@ -136,7 +168,7 @@
         background-color: @fWhite;
         position: absolute;
         min-height: 100%;
-        .long-comment-title, .short-comment-title {
+        .long-comment-title, .short-comment-title, .my-comment-title {
             padding-bottom: 8%;
             overflow: hidden;
             height: 0;
@@ -148,10 +180,10 @@
             font-weight: 700;
         }
 
-        .long-comment-ul, .short-comment-ul {
+        .long-comment-ul, .short-comment-ul, .my-comment-ul {
             overflow: hidden;
 
-            .long-comment-content, .short-comment-content {
+            .long-comment-content, .short-comment-content , .my-comment-content {
                 display: flex;
                 border-bottom: 0.02rem solid @commentBorder;
                 padding-left: 5%;

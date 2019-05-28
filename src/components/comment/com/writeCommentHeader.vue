@@ -1,8 +1,8 @@
 <template>
     <div class="write-comment-header">
-        <div class="header-back"><span class="iconfont icon-back">&#xe64c;</span></div>
+        <div class="header-back" @click="closeWrite"><span class="iconfont icon-back">&#xe64c;</span></div>
         <div class="header-text">写点评</div>
-        <div class="header-plane"><span class="iconfont icon-plane">&#xe717;</span></div>
+        <div class="header-plane" @click="sendComment"><span class="iconfont icon-plane">&#xe717;</span></div>
     </div>
 </template>
 
@@ -22,6 +22,14 @@
                 }else {
                     document.body.classList.remove('dudu-night')
                 }
+            },
+            //点击返回按钮给父组件传递关闭写组件的命令
+            closeWrite() {
+                this.$emit('closeWrite')
+            },
+            //点击写按钮
+            sendComment() {
+                this.$store.dispatch('changeWritting',true)
             }
         },
         computed: {

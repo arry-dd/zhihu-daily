@@ -78,6 +78,13 @@ export default {
             }
         };
         state.likeId.remove(data)
+    },
+    //添加收藏id
+    addMyComment(state, data) {
+        state.myComment.push(data)
+    },
+    changeWritting(state, data) {
+        state.writting = data
     }
 
 }

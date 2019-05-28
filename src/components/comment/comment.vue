@@ -1,9 +1,9 @@
 <template>
     <div class="comment">
-        <!--        <comment-header v-if="show"></comment-header>-->
-        <write-comment-header></write-comment-header>
-        <!--        <long-comment v-if="show"></long-comment>-->
-        <write-comment></write-comment>
+        <comment-header v-show="showAndWrite" @showWrite="showWrite"></comment-header>
+        <write-comment-header v-show="write"  @closeWrite="closeWrite"></write-comment-header>
+        <long-comment v-show="showAndWrite"></long-comment>
+        <write-comment v-show="write"></write-comment>
         <div class="detail-load" v-if="!show">
             <div class="detail-load-container">
                 <span class="iconfont icon-load">&#xe70f;</span>
@@ -31,7 +31,14 @@
         data() {
             return {
                 //等数据加载完再渲染的标志
-                show: false
+                show: false,
+                write: false
+            }
+        },
+        computed: {
+            // 是否显示comment主页面
+            showAndWrite() {
+                return this.show && !this.write
             }
         },
         methods: {
@@ -56,6 +63,14 @@
                 if (data.comments) {
                     this.$store.dispatch('changeShortComment', data.comments)
                 }
+            },
+            //接受子组件传来消息，并显示写组件
+            showWrite() {
+                this.write = true
+            },
+            //接受子组件传来消息，并关闭写组件
+            closeWrite() {
+                this.write = false
             }
         },
         mounted() {

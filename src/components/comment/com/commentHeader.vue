@@ -2,7 +2,7 @@
     <div class="comment-header">
         <router-link :to="'/detail/'+this.$route.params.id" tag="div" class="header-back"><span class="iconfont icon-back">&#xe64c;</span></router-link>
         <div class="header-text">16条点评</div>
-        <div class="header-write"><span class="iconfont icon-write">&#xe702;</span></div>
+        <div class="header-write" @click="showWrite"><span class="iconfont icon-write">&#xe702;</span></div>
     </div>
 </template>
 
@@ -22,6 +22,10 @@
                 }else {
                     document.body.classList.remove('dudu-night')
                 }
+            },
+            //点击写按钮，给父组件传递信息
+            showWrite() {
+                this.$emit('showWrite')
             }
         },
         computed: {
@@ -64,15 +68,6 @@
             float: right;
             margin: 0 .25rem 0 0;
         }
-
-        /*.header-comment, .header-like, .header-star, .header-share {*/
-        /*    float: right;*/
-        /*}*/
-
-        /*.icon-comment, .icon-like {*/
-        /*    margin-right: .1rem;*/
-        /*}*/
-
 
     }
     .dudu-night .comment-header {

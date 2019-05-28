@@ -24,5 +24,14 @@ export default {
     //收藏的id
     collectId: [],
     //点赞的id
-    likeId: []
+    likeId: [],
+    //用户名和头像
+    user: {
+        id: "知了个乎",
+        head: "http://pic1.zhimg.com/332ae97ce262070a56958a2bedf3f64c_im.jpg"
+    },
+    //我的评论
+    myComment: [],
+    //改变写评论的状态
+    writting: false
 }

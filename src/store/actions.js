@@ -58,5 +58,13 @@ export default {
     //删除指定的收藏id
     removeLikeId(ctx, data) {
         ctx.commit('removeLikeId', data)
+    },
+    //添加收藏id
+    addMyComment(ctx, data) {
+        ctx.commit('addMyComment', data)
+    },
+    //改变写评论的状态
+    changeWritting(ctx, data) {
+        ctx.commit('changeWritting', data)
     }
 }
