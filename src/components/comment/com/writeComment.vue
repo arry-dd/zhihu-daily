@@ -64,6 +64,7 @@
                     };
                     this.$store.dispatch('addMyComment', obj)
                     this.$store.dispatch('changeWritting', false)
+                    this.$emit('closeWrite')
                 }
             }
         },

@@ -105,18 +105,6 @@
 
             }
         },
-        // watch: {
-        //     //根据isLike改变vuex中extraData.popularity的值，并且添加或删除icon-is-like类
-        //     isLike(newVal) {
-        //         if (newVal) {
-        //             this.$store.dispatch('changePopularity', this.extraData.popularity + 1)
-        //             this.$refs.like.classList.add('icon-is-like')
-        //         } else {
-        //             this.$store.dispatch('changePopularity', this.extraData.popularity - 1)
-        //             this.$refs.like.classList.remove('icon-is-like')
-        //         }
-        //     }
-        // },
         mounted() {
             //设置事件改变头部的透明度
             window.addEventListener('scroll', this.changeHeaderOpacity)

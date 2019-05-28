@@ -1,6 +1,8 @@
 <template>
     <div class="collect">
-        <side-bar v-show="flagShowSideBar" @closeSideBar="closeSideBar"></side-bar>
+        <side-bar-animation>
+            <side-bar v-show="flagShowSideBar" @closeSideBar="closeSideBar"></side-bar>
+        </side-bar-animation>
         <collect-header @showSideBar="showSideBar"></collect-header>
         <collect-content :collectList="collectList"></collect-content>
     </div>
@@ -12,13 +14,15 @@
     import collectContent from 'collect/com/collectContent'
     import axios from 'axios'
     import {mapState} from 'vuex'
+    import sideBarAnimation from 'common/sideBarAnimation'
 
     export default {
         name: 'collect',
         components: {
             collectHeader,
             sideBar,
-            collectContent
+            collectContent,
+            sideBarAnimation
         },
         data() {
             return {

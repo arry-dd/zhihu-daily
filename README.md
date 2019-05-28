@@ -1,5 +1,33 @@
 # Vue2.6 打造网页版知乎日报(高仿安卓版的知乎日报V2.6.0)
-
+   **自学前端的大学生一枚，在学习了一个月的vue之后，决定找一个项目练练手。在GitHub中偶然发现了[izzyleung](https://github.com/izzyleung/ZhihuDailyPurify/wiki/%E7%9F%A5%E4%B9%8E%E6%97%A5%E6%8A%A5-API-%E5%88%86%E6%9E%90)大佬提供的知乎日报API之后，决定打造一个网页版的知乎日报。假如各位大佬有什么建议，可以提交issue和我深入交流哦。**
+   
+ ##技术栈
+   vue3,vue-router,axios,less,vuex
+    
+ ##项目运行
+ #### `npm install`
+   安装依赖
+      
+ #### `npm run dev`
+   本地开发，开启本地服务器，访问http://localhost:5000/即可
+ 
+ #### `npm run build`
+   构建生产
+   
+   
+ ##功能
+ 1. 首页
+    轮播图、今日新闻、往日新闻、页面跳转、收藏侧边栏
+ 2. 详情页
+    图片、详细新闻、收藏、点赞、头部透明度变化
+ 3. 收藏页面
+    查看收藏、侧边栏、页面跳转
+ 4. 评论页面
+    查看长短评论、发表评论
+ 5. 其他
+    sessionStorage和vuex存储、夜间模式
+     
+   
 ##说明
 1. 图标使用阿里巴巴的Iconfont
 2. 由于知乎日报api图片url存在防盗链的问题，所以我在index.html文件中添加了以下标签
@@ -7,7 +35,8 @@
   详细说明请看[这里](https://www.cnblogs.com/dongcanliang/archive/2017/04/01/6655061.html)
 3. 知乎日报api获取数据时ajax存在跨域问题，所以我使用devServer的proxy解决。
 4. 使用fastclick解决移动端中click事件延迟问题，可以愉快地使用click
-  `devServer: {
+  `
+  devServer: {
         port: 5000,
         proxy: {
             '/api': {
@@ -63,4 +92,5 @@
              });
          }`
 
-
+##License
+  [MIT](https://opensource.org/licenses/MIT)

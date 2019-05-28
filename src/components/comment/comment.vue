@@ -3,7 +3,7 @@
         <comment-header v-show="showAndWrite" @showWrite="showWrite"></comment-header>
         <write-comment-header v-show="write"  @closeWrite="closeWrite"></write-comment-header>
         <long-comment v-show="showAndWrite"></long-comment>
-        <write-comment v-show="write"></write-comment>
+        <write-comment v-show="write" @closeWrite="closeWrite"></write-comment>
         <div class="detail-load" v-if="!show">
             <div class="detail-load-container">
                 <span class="iconfont icon-load">&#xe70f;</span>

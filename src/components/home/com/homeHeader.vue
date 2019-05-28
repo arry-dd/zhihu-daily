@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div :class="headerClass">
+        <div class="header">
             <div class="header-menu" @click="showSideBar"><span class="iconfont icon-menu">&#xe605;</span></div>
             <div class="header-text">首页</div>
             <div class="header-set" @click="settingShow"><span class="iconfont icon-set">&#xe6a9;</span></div>
@@ -10,7 +10,6 @@
             <div class="setting" v-if="flagSettingShow">
                 <ul>
                     <li class="setting-night" @click="changeColor">{{nightText}}</li>
-                    <li class="setting-detail">设置选项</li>
                 </ul>
             </div>
         </fadeAnimation>
@@ -30,9 +29,8 @@
         },
         data() {
             return {
-                headerClass: 'header',
                 flagSettingShow: false,
-                nightText : '夜间模式'
+                nightText: '夜间模式'
             }
         },
         computed: {
@@ -41,13 +39,13 @@
         methods: {
             changeColor() {
                 this.$store.commit('changeNight')
-                // this.flagSettingShow = false
             },
-            isNight() {
-                if (this.night == true) {
-                    this.headerClass = 'header header-night'
+            //判断是否夜间模式,添加dudu-night类名
+            changeNight() {
+                if (this.night) {
+                    document.body.classList.add('dudu-night')
                 } else {
-                    this.headerClass = 'header'
+                    document.body.classList.remove('dudu-night')
                 }
             },
             //是否显示设置栏
@@ -60,22 +58,17 @@
             }
         },
         watch: {
-            //监听night进行夜间模式切换
-            night(newVal) {
-                this.isNight()
-                if(newVal) {
-                    this.nightText = '日间模式'
-                }else {
-                    this.nightText = '夜间模式'
-                }
-            },
             flagSettingShow() {
-                if(this.flagSettingShow) {
-                    window.addEventListener('click',this.settingShow)
-                }else {
-                    window.removeEventListener('click',this.settingShow)
+                if (this.flagSettingShow) {
+                    window.addEventListener('click', this.settingShow)
+                } else {
+                    window.removeEventListener('click', this.settingShow)
                 }
-            },
+            }
+        },
+        mounted() {
+            //判断是否夜间模式
+            this.changeNight()
         }
     }
 </script>
@@ -93,18 +86,12 @@
         z-index: 5;
         padding-top: 5%;
 
-        &.header-night {
-            background-color: @baseBlueColorNight;
-        }
 
         div {
             display: inline-block;
-            /*height: 1.1rem;*/
-            /*line-height: 1.1rem;*/
             padding-bottom: 10%;
             height: 0;
             margin: 0 .25rem;
-            /*box-sizing: border-box;*/
         }
 
         .header-menu, .header-text {
@@ -128,7 +115,7 @@
     .setting {
         position: fixed;
         z-index: 10;
-        padding-bottom: 25%;
+        padding-bottom: 12.5%;
         width: 50%;
         right: .1rem;
         top: .1rem;
@@ -141,5 +128,9 @@
             color: @textColorUnclick;
         }
 
+    }
+
+    .dudu-night .header {
+        background-color: @baseBlueColorNight!important;
     }
 </style>

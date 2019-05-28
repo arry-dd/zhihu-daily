@@ -7,10 +7,8 @@
 </template>
 
 <script>
-
     export default {
         name: 'app',
-        components: {},
         //解决页面刷新vuex数据丢失的问题
         created() {
             //在页面加载时读取sessionStorage里的状态信息

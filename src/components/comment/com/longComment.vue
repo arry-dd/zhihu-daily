@@ -1,7 +1,7 @@
 <template>
     <div class="comment">
 <!--    我的评论区-->
-        <div class="my-comment-title" @click="showShort">我的评论</div>
+        <div class="my-comment-title" @click="showShort" v-show="showMyComment">我的评论</div>
         <ul class="my-comment-ul">
             <li class="my-comment-content" v-for="(item,index) in thisIdMyComment" :key="index">
                 <div class="content-img">
@@ -48,7 +48,8 @@
                 <div class="no-longComment-content-sofa"><span class="iconfont">&#xe63b;</span></div>
                 <div class="no-longComment-content-text">深度长评虚位以待</div>
             </div>
-        </div>
+
+       </div>
 <!--        短评区-->
         <div class="short-comment-title" @click="showShort">{{shortComment.length}} 条短评</div>
         <ul class="short-comment-ul" v-if="FlagShowShortComment">
@@ -89,8 +90,12 @@
                     if (value.id == this.$route.params.id) {
                         arr.push(value)
                     }
-                })
+                });
                 return arr
+            },
+            //计算我的评论的长度，并决定是否显示我的评论
+            showMyComment() {
+                return this.thisIdMyComment.length
             }
         },
         data() {
@@ -102,7 +107,7 @@
             //格式化时间
             formatTime(time) {
                 let unixTimestamp = new Date(time * 1000);
-                let month = unixTimestamp.getMonth() + 1
+                let month = unixTimestamp.getMonth() + 1;
                 if (month < 10) {
                     month = '0' + month
                 }
@@ -259,7 +264,7 @@
         .no-longComment {
             width: 100%;
             margin: 0 auto;
-            height: 8.5rem;
+            height: 8rem;
             position: relative;
             vertical-align: middle;
 
