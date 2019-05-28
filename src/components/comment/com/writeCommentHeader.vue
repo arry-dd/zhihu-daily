@@ -1,15 +1,15 @@
 <template>
-    <div class="comment-header">
-        <router-link :to="'/detail/'+this.$route.params.id" tag="div" class="header-back"><span class="iconfont icon-back">&#xe64c;</span></router-link>
-        <div class="header-text">16条点评</div>
-        <div class="header-write"><span class="iconfont icon-write">&#xe702;</span></div>
+    <div class="write-comment-header">
+        <div class="header-back"><span class="iconfont icon-back">&#xe64c;</span></div>
+        <div class="header-text">写点评</div>
+        <div class="header-plane"><span class="iconfont icon-plane">&#xe717;</span></div>
     </div>
 </template>
 
 <script>
     import {mapState} from 'vuex'
     export default {
-        name: 'commentHeader',
+        name: 'writeCommentHeader',
         mounted() {
             //判断是否夜间模式
             this.changeNight()
@@ -31,7 +31,7 @@
 </script>
 
 <style scoped lang="less">
-    .comment-header {
+    .write-comment-header {
         width: 100%;
         background-color: @baseBlueColor;
         overflow: hidden;
@@ -42,7 +42,6 @@
         left: 0;
         z-index: 5;
         padding-top: 5%;
-
         div {
             display: inline-block;
             padding-bottom: 10%;
@@ -60,22 +59,14 @@
             margin-left: .4rem;
         }
 
-        .header-write {
+        .header-plane {
             float: right;
             margin: 0 .25rem 0 0;
         }
 
-        /*.header-comment, .header-like, .header-star, .header-share {*/
-        /*    float: right;*/
-        /*}*/
-
-        /*.icon-comment, .icon-like {*/
-        /*    margin-right: .1rem;*/
-        /*}*/
-
 
     }
-    .dudu-night .comment-header {
+    .dudu-night .write-comment-header {
         background-color: @baseBlueColorNight;
     }
 </style>

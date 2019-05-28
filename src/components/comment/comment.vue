@@ -1,7 +1,9 @@
 <template>
     <div class="comment">
-        <comment-header v-if="show"></comment-header>
-        <long-comment v-if="show"></long-comment>
+        <!--        <comment-header v-if="show"></comment-header>-->
+        <write-comment-header></write-comment-header>
+        <!--        <long-comment v-if="show"></long-comment>-->
+        <write-comment></write-comment>
         <div class="detail-load" v-if="!show">
             <div class="detail-load-container">
                 <span class="iconfont icon-load">&#xe70f;</span>
@@ -14,13 +16,17 @@
 <script>
     import commentHeader from 'comment/com/commentHeader'
     import longComment from 'comment/com/longComment'
+    import writeCommentHeader from 'comment/com/writeCommentHeader'
+    import writeComment from 'comment/com/writeComment'
     import axios from 'axios'
 
     export default {
         name: 'comment',
         components: {
             commentHeader,
-            longComment
+            longComment,
+            writeCommentHeader,
+            writeComment
         },
         data() {
             return {
@@ -30,25 +36,25 @@
         },
         methods: {
             getLongComment() {
-                axios.get('/api/4/story/'+this.$route.params.id+'/long-comments')
+                axios.get('/api/4/story/' + this.$route.params.id + '/long-comments')
                     .then(this.getLongCommentSucc)
             },
             getLongCommentSucc(ret) {
                 const data = ret.data
-                if(data.comments) {
-                    this.$store.dispatch('changeLongComment',data.comments)
+                if (data.comments) {
+                    this.$store.dispatch('changeLongComment', data.comments)
                 }
                 //等数据加载完再渲染
                 this.show = true
             },
             getShortComment() {
-                axios.get('/api/4/story/'+this.$route.params.id+'/short-comments')
+                axios.get('/api/4/story/' + this.$route.params.id + '/short-comments')
                     .then(this.getShortCommentSucc)
             },
             getShortCommentSucc(ret) {
                 const data = ret.data
-                if(data.comments) {
-                    this.$store.dispatch('changeShortComment',data.comments)
+                if (data.comments) {
+                    this.$store.dispatch('changeShortComment', data.comments)
                 }
             }
         },
@@ -67,22 +73,22 @@
         height: 100%;
         background-color: @fWhite;
 
-    .detail-load-container {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        text-align: center;
-        color: @textColorClick;
+        .detail-load-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: @textColorClick;
 
-    .icon-load {
-        display: inline-block;
-        font-size: 3rem;
-    }
+            .icon-load {
+                display: inline-block;
+                font-size: 3rem;
+            }
 
-    p {
-        font-size: .3rem;
-    }
-    }
+            p {
+                font-size: .3rem;
+            }
+        }
     }
 </style>

@@ -2,7 +2,7 @@
     <div class="collectHeader">
         <div class="header">
             <div class="header-menu"><span class="iconfont icon-menu" @click="showSideBar">&#xe605;</span></div>
-            <div class="header-text">4 条收藏</div>
+            <div class="header-text">{{collectId.length}} 条收藏</div>
         </div>
     </div>
 </template>
@@ -26,7 +26,7 @@
             }
         },
         computed: {
-            ...mapState(['night'])
+            ...mapState(['night','collectId'])
         },
         mounted() {
             //判断是否夜间模式
