@@ -85,6 +85,9 @@
                 }
                 let year = date.getFullYear();
                 let nowDate = eval(date.getDate() + 1);
+                if (nowDate) {
+                    nowDate = nowDate < 10 ? '0' + nowDate : nowDate
+                }
                 let week = date.getDay();
                 let str = this.judgeDay(week);
                 // this.weeks = week
