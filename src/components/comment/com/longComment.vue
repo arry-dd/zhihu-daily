@@ -108,21 +108,25 @@
             formatTime(time) {
                 let unixTimestamp = new Date(time * 1000);
                 let month = unixTimestamp.getMonth() + 1;
-                if (month < 10) {
-                    month = '0' + month
-                }
+                // if (month < 10) {
+                //     month = '0' + month
+                // }
+                month = month.toString().padStart(2,'0')
                 let date = unixTimestamp.getDate();
-                if (date < 10) {
-                    date = '0' + date
-                }
+                // if (date < 10) {
+                //     date = '0' + date
+                // }
+                date = date.toString().padStart(2,'0')
                 let hours = unixTimestamp.getHours();
-                if (hours < 10) {
-                    hours = '0' + hours
-                }
+                // if (hours < 10) {
+                //     hours = '0' + hours
+                // }
+                hours = hours.toString().padStart(2,'0')
                 let minutes = unixTimestamp.getMinutes();
-                if (minutes < 10) {
-                    minutes = '0' + minutes
-                }
+                // if (minutes < 10) {
+                //     minutes = '0' + minutes
+                // }
+                minutes = minutes.toString().padStart(2,'0')
                 return month + '-' + date + ' ' + hours + ':' + minutes
             },
             //点击显示短评

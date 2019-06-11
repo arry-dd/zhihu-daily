@@ -38,21 +38,25 @@
                     let head = this.user.head;
                     let date = new Date();
                     let month = date.getMonth() + 1;
-                    if (month < 10) {
-                        month = '0' + month
-                    }
+                    // if (month < 10) {
+                    //     month = '0' + month
+                    // }
+                    month = month.toString().padStart(2,'0')
                     let date1 = date.getDate();
-                    if (date1 < 10) {
-                        date1 = '0' + date1
-                    }
+                    // if (date1 < 10) {
+                    //     date1 = '0' + date1
+                    // }
+                    date1 = date1.toString().padStart(2,'0')
                     let hour = date.getHours();
-                    if (hour < 10) {
-                        hour = '0' + hour
-                    }
+                    // if (hour < 10) {
+                    //     hour = '0' + hour
+                    // }
+                    hour = hour.toString().padStart(2,'0')
                     let minute = date.getMinutes();
-                    if (minute < 10) {
-                        minute = '0' + minute
-                    }
+                    // if (minute < 10) {
+                    //     minute = '0' + minute
+                    // }
+                    minute = minute.toString().padStart(2,'0')
                     let time = month + '-' + date1 + ' ' + hour + ':' + minute;
 
                     let obj = {

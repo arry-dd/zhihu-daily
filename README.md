@@ -25,7 +25,7 @@
  4. 评论页面
     查看长短评论、发表评论
  5. 其他
-    sessionStorage和vuex存储、夜间模式
+    sessionStorage和vuex状态管理、夜间模式
 
  详细的[gif](https://github.com/arry-dd/gif)在这里   
 
@@ -46,7 +46,7 @@
             }
         }
     }`
-5. 项目的数据存储在vuex中。为了防止页面属性数据丢失，决定用用sessionStorage来保存state里的数据。在App.vue中添加如下代码
+5. 项目使用vuex做状态管理。为了防止页面属性数据丢失，决定用用sessionStorage来保存state里的数据。在App.vue中添加如下代码
   
 
   ```javascript

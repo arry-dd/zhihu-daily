@@ -80,14 +80,16 @@
             //获取日期
             getDate(date) {
                 let month = date.getMonth();
-                if (month) {
-                    month = month < 10 ? '0' + month : month
-                }
+                // if (month) {
+                //     month = month < 10 ? '0' + month : month
+                // }
+                 month = month.toString().padStart(2,'0')
                 let year = date.getFullYear();
                 let nowDate = eval(date.getDate() + 1);
-                if (nowDate) {
-                    nowDate = nowDate < 10 ? '0' + nowDate : nowDate
-                }
+                // if (nowDate) {
+                //     nowDate = nowDate < 10 ? '0' + nowDate : nowDate
+                // }
+                nowDate = nowDate.toString().padStart(2,'0')
                 let week = date.getDay();
                 let str = this.judgeDay(week);
                 // this.weeks = week
@@ -115,8 +117,10 @@
                 let newMonth = (new Date(retTime)).getMonth();
                 let newDate = (new Date(retTime)).getDate();
                 let newDay = (new Date(retTime)).getDay();
-                newMonth = newMonth < 10 ? '0' + newMonth : newMonth;
-                newDate = newDate < 10 ? '0' + newDate : newDate;
+                // newMonth = newMonth < 10 ? '0' + newMonth : newMonth;
+                newMonth = newMonth.toString().padStart(2,'0')
+                // newDate = newDate < 10 ? '0' + newDate : newDate;
+                newDate = newDate.toString().padStart(2,'0')
                 this.dateMinus = newYear + '' + newMonth + '' + newDate;
                 this.getPastNews();
                 let day = this.judgeDay(newDay);
