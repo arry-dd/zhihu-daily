@@ -101,8 +101,6 @@
                 } else {
                     this.$router.push('/')
                 }
-
-
             }
         },
         mounted() {
