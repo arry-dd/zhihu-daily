@@ -38,7 +38,9 @@
                 // weeks: 0,
                 count: 0,
                 //是否显示侧边栏的标记
-                flagShowSideBar: false
+                flagShowSideBar: false,
+                //滑动到底部，防抖，防止重复地发送请求
+                httpClock: true
             }
         },
         computed: {
@@ -83,13 +85,13 @@
                 // if (month) {
                 //     month = month < 10 ? '0' + month : month
                 // }
-                 month = month.toString().padStart(2,'0')
+                month = month.toString().padStart(2, '0');
                 let year = date.getFullYear();
                 let nowDate = eval(date.getDate() + 1);
                 // if (nowDate) {
                 //     nowDate = nowDate < 10 ? '0' + nowDate : nowDate
                 // }
-                nowDate = nowDate.toString().padStart(2,'0')
+                nowDate = nowDate.toString().padStart(2, '0');
                 let week = date.getDay();
                 let str = this.judgeDay(week);
                 // this.weeks = week
@@ -99,7 +101,9 @@
             //获取以前的新闻
             getPastNews() {
                 axios.get('/api/4/news/before/' + this.dateMinus)
-                    .then(this.getPastNewsSucc)
+                    .then(this.getPastNewsSucc,()=>{
+                        this.httpClock = true;
+                    })
             },
             getPastNewsSucc(ret) {
                 const data = ret.data;
@@ -107,6 +111,7 @@
                     this.$store.dispatch('pushPastStories', data.stories);
                     this.$store.dispatch('pushNewsDate', data.date);
                 }
+                this.httpClock = true;
             },
             //页面滚动到底部获取更多日期的新闻：
             //把日期减一，然后发ajax请求
@@ -118,9 +123,9 @@
                 let newDate = (new Date(retTime)).getDate();
                 let newDay = (new Date(retTime)).getDay();
                 // newMonth = newMonth < 10 ? '0' + newMonth : newMonth;
-                newMonth = newMonth.toString().padStart(2,'0')
+                newMonth = newMonth.toString().padStart(2, '0');
                 // newDate = newDate < 10 ? '0' + newDate : newDate;
-                newDate = newDate.toString().padStart(2,'0')
+                newDate = newDate.toString().padStart(2, '0');
                 this.dateMinus = newYear + '' + newMonth + '' + newDate;
                 this.getPastNews();
                 let day = this.judgeDay(newDay);
@@ -136,18 +141,20 @@
             //监听屏幕滑动底部
             listenBottom() {
                 let html = document.documentElement;
-
                 if (html.scrollHeight - html.offsetHeight - html.scrollTop < 5) {
-                    this.dateMinusOne();
+                    if (this.httpClock) {
+                        this.httpClock = false;
+                        this.dateMinusOne();
+                    }
                 }
             },
             //头部的菜单按钮点击后，显示侧边栏
             showSideBar() {
-                this.flagShowSideBar = true
+                this.flagShowSideBar = true;
             },
             //关闭侧边栏
             closeSideBar() {
-                this.flagShowSideBar = false
+                this.flagShowSideBar = false;
             }
         },
         mounted() {
@@ -155,6 +162,8 @@
             this.getDate(new Date());
             this.dateMinus = this.date;
             this.getPastNews();
+            //开http锁
+            this.httpClock = true;
         },
         activated() {
             //页面滚动到底部获取更多日期的新闻

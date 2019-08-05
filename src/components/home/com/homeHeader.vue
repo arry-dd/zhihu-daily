@@ -1,11 +1,13 @@
 <template>
     <div>
-        <div class="header">
+<!--        <div class="header">-->
+        <header-com>
             <div class="header-menu" @click="showSideBar"><span class="iconfont icon-menu">&#xe605;</span></div>
             <div class="header-text">首页</div>
             <div class="header-set" @click="settingShow"><span class="iconfont icon-set">&#xe6a9;</span></div>
             <div class="header-alert"><span class="iconfont icon-alert">&#xe794;</span></div>
-        </div>
+        </header-com>
+<!--        </div>-->
         <fadeAnimation>
             <div class="setting" v-if="flagSettingShow">
                 <ul>
@@ -19,58 +21,60 @@
 </template>
 
 <script>
-    import {mapState} from 'vuex'
-    import fadeAnimation from 'common/fadeAnimation'
+  import {mapState} from 'vuex'
+  import fadeAnimation from 'common/fadeAnimation'
+  import headerCom from '../../common/header';
 
-    export default {
-        name: 'homeHeader',
-        components: {
-            fadeAnimation
-        },
-        data() {
-            return {
-                flagSettingShow: false,
-                nightText: '夜间模式'
-            }
-        },
-        computed: {
-            ...mapState(['topStories', 'night'])
-        },
-        methods: {
-            changeColor() {
-                this.$store.commit('changeNight')
-            },
-            //判断是否夜间模式,添加dudu-night类名
-            changeNight() {
-                if (this.night) {
-                    document.body.classList.add('dudu-night')
-                } else {
-                    document.body.classList.remove('dudu-night')
-                }
-            },
-            //是否显示设置栏
-            settingShow() {
-                this.flagSettingShow = !this.flagSettingShow
-            },
-            //点击菜单按钮，向父组件发送要显示侧边栏的请求
-            showSideBar() {
-                this.$emit('showSideBar')
-            }
-        },
-        watch: {
-            flagSettingShow() {
-                if (this.flagSettingShow) {
-                    window.addEventListener('click', this.settingShow)
-                } else {
-                    window.removeEventListener('click', this.settingShow)
-                }
-            }
-        },
-        mounted() {
-            //判断是否夜间模式
-            this.changeNight()
+  export default {
+    name: 'homeHeader',
+    components: {
+      fadeAnimation,
+      headerCom
+    },
+    data() {
+      return {
+        flagSettingShow: false,
+        nightText: '夜间模式'
+      }
+    },
+    computed: {
+      ...mapState(['topStories', 'night'])
+    },
+    methods: {
+      changeColor() {
+        this.$store.commit('changeNight')
+      },
+      //判断是否夜间模式,添加dudu-night类名
+      changeNight() {
+        if (this.night) {
+          document.body.classList.add('dudu-night')
+        } else {
+          document.body.classList.remove('dudu-night')
         }
+      },
+      //是否显示设置栏
+      settingShow() {
+        this.flagSettingShow = !this.flagSettingShow
+      },
+      //点击菜单按钮，向父组件发送要显示侧边栏的请求
+      showSideBar() {
+        this.$emit('showSideBar')
+      }
+    },
+    watch: {
+      flagSettingShow() {
+        if (this.flagSettingShow) {
+          window.addEventListener('click', this.settingShow)
+        } else {
+          window.removeEventListener('click', this.settingShow)
+        }
+      }
+    },
+    mounted() {
+      //判断是否夜间模式
+      this.changeNight()
     }
+  }
 </script>
 
 <style scoped lang="less">
@@ -131,6 +135,6 @@
     }
 
     .dudu-night .header {
-        background-color: @baseBlueColorNight!important;
+        background-color: @baseBlueColorNight !important;
     }
 </style>
